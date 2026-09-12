@@ -110,9 +110,8 @@ export const Footer: React.FC<FooterProps> = ({ language, onSelectTab }) => {
             </p>
             <p>{t.footer_disclaimer}</p>
           </div>
-          <div className="mt-6 text-center text-[11px] text-slate-500 flex flex-wrap justify-between items-center gap-2">
+          <div className="mt-6 text-center text-[11px] text-slate-500 flex justify-center items-center">
             <span>© {new Date().getFullYear()} Samvida — Independent Citizen Assistance Layer.</span>
-            <span>Built with React, TypeScript, Tailwind CSS, & Supabase.</span>
           </div>
         </div>
       </div>
