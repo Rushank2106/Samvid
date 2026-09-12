@@ -97,11 +97,11 @@ export const HomePage: React.FC<Props> = ({
           {/* Right Column: SAMVIDA Emblem Showcase */}
           <div className="hidden lg:flex items-center justify-center flex-shrink-0 w-80 h-80 relative group">
             <div className="absolute inset-0 bg-gradient-to-tr from-saffron-500/25 via-white/10 to-indiagreen-500/25 rounded-full blur-2xl group-hover:scale-110 transition-transform duration-500" />
-            <div className="relative z-10 bg-white p-3 rounded-full border-4 border-saffron-400 shadow-2xl transition-all duration-300 w-72 h-72 flex items-center justify-center">
+            <div className="relative z-10 bg-white p-1 rounded-full border-4 border-saffron-400 shadow-2xl transition-all duration-300 w-72 h-72 flex items-center justify-center overflow-hidden">
               <img
                 src={SAMVIDA_LOGO_DATA_URI}
                 alt="SAMVIDA Official Government Scheme Emblem"
-                className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-xl rounded-full"
+                className="w-full h-full object-cover scale-[1.28] group-hover:scale-[1.35] transition-transform duration-300 drop-shadow-xl rounded-full"
               />
             </div>
           </div>
