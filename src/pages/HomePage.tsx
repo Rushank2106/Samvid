@@ -19,6 +19,7 @@ import {
 import { MOCK_LIFE_EVENTS } from '../data/mockLifeEvents';
 import { getTranslationDictionary } from '../data/translations';
 import { Language, SchemeCategory } from '../types';
+import { SAMVIDA_LOGO_DATA_URI } from '../assets/samvidaLogoDataUri';
 
 interface Props {
   onStartEligibility: () => void;
@@ -59,7 +60,7 @@ export const HomePage: React.FC<Props> = ({
       <section className="relative bg-gradient-to-b from-navy-950 via-slate-900 to-slate-900 text-white rounded-3xl p-8 sm:p-14 overflow-hidden border border-slate-800 shadow-xl border-t-4 border-t-saffron-500">
         <div className="max-w-3xl space-y-6 relative z-10">
           <div className="inline-flex items-center gap-2.5 bg-slate-900/90 border border-saffron-500/60 px-4 py-1.5 rounded-full text-xs font-bold text-saffron-300 backdrop-blur-md">
-            <img src="/samvida-logo.jpg" alt="Samvida Logo" className="w-5 h-5 rounded-full object-contain bg-white p-0.5 border border-saffron-400" />
+            <img src={SAMVIDA_LOGO_DATA_URI} alt="Samvida Logo" className="w-5 h-5 rounded-full object-contain bg-white p-0.5 border border-saffron-400" />
             <span>SAMVIDA Track — AI Multilingual Citizen Navigator</span>
           </div>
 

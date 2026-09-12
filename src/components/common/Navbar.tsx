@@ -2,6 +2,7 @@ import React from 'react';
 import { ShieldCheck, Globe, UserCheck, Search, HelpCircle, ShieldAlert, LayoutDashboard } from 'lucide-react';
 import { getTranslationDictionary, ALL_LANGUAGES } from '../../data/translations';
 import { Language } from '../../types';
+import { SAMVIDA_LOGO_DATA_URI } from '../../assets/samvidaLogoDataUri';
 
 interface NavbarProps {
   currentTab: string;
@@ -30,7 +31,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             onClick={() => onSelectTab('home')}
           >
             <img
-              src="/samvida-logo.jpg"
+              src={SAMVIDA_LOGO_DATA_URI}
               alt="Samvida Logo"
               className="w-10 h-10 object-contain rounded-full shadow-md bg-white p-0.5 border-2 border-saffron-500 group-hover:scale-105 transition-all"
             />

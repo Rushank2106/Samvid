@@ -18,6 +18,7 @@ import { ChatMessage, Language, UserEligibilityProfile } from '../../types';
 import { processAssistantQuery } from '../../services/aiService';
 import { voiceService } from '../../services/voiceService';
 import { getTranslationDictionary, ALL_LANGUAGES } from '../../data/translations';
+import { SAMVIDA_LOGO_DATA_URI } from '../../assets/samvidaLogoDataUri';
 
 interface Props {
   language: Language;
@@ -193,7 +194,7 @@ export const SamvidaAssistant: React.FC<Props> = ({
           title="Open Samvida Multilingual Assistant"
         >
           <div className="relative">
-            <img src="/samvida-logo.jpg" alt="Samvida Logo" className="w-7 h-7 rounded-full object-contain bg-white p-0.5 border border-saffron-400 group-hover:rotate-6 transition-transform" />
+            <img src={SAMVIDA_LOGO_DATA_URI} alt="Samvida Logo" className="w-7 h-7 rounded-full object-contain bg-white p-0.5 border border-saffron-400 group-hover:rotate-6 transition-transform" />
             <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping" />
           </div>
           <span className="font-extrabold text-xs sm:text-sm pr-1 hidden sm:inline tracking-wide text-white">
@@ -208,7 +209,7 @@ export const SamvidaAssistant: React.FC<Props> = ({
           {/* Header with Ashoka Navy background & Tricolour border */}
           <div className="bg-slate-900 text-white p-3.5 flex items-center justify-between border-b-2 border-saffron-500">
             <div className="flex items-center gap-2.5">
-              <img src="/samvida-logo.jpg" alt="Samvida Logo" className="w-8 h-8 rounded-full object-contain bg-white p-0.5 border border-saffron-500 shadow" />
+              <img src={SAMVIDA_LOGO_DATA_URI} alt="Samvida Logo" className="w-8 h-8 rounded-full object-contain bg-white p-0.5 border border-saffron-500 shadow" />
               <div>
                 <h3 className="font-extrabold text-sm text-white leading-none">
                   Samvida Assistant

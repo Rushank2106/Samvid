@@ -2,6 +2,7 @@ import React from 'react';
 import { ShieldCheck, ExternalLink, Lock, CheckCircle2, Server } from 'lucide-react';
 import { getTranslationDictionary } from '../../data/translations';
 import { Language } from '../../types';
+import { SAMVIDA_LOGO_DATA_URI } from '../../assets/samvidaLogoDataUri';
 
 interface FooterProps {
   language: Language;
@@ -18,7 +19,7 @@ export const Footer: React.FC<FooterProps> = ({ language, onSelectTab }) => {
           {/* Brand Col */}
           <div className="md:col-span-1 space-y-3">
             <div className="flex items-center gap-2.5 text-white">
-              <img src="/samvida-logo.jpg" alt="Samvida Logo" className="w-8 h-8 rounded-full object-contain bg-white p-0.5 border border-saffron-500 shadow-sm" />
+              <img src={SAMVIDA_LOGO_DATA_URI} alt="Samvida Logo" className="w-8 h-8 rounded-full object-contain bg-white p-0.5 border border-saffron-500 shadow-sm" />
               <span className="text-xl font-extrabold tracking-tight">{t.brand_name}</span>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">
