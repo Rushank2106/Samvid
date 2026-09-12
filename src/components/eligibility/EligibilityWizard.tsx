@@ -491,7 +491,7 @@ export const EligibilityWizard: React.FC<Props> = ({ initialProfile, onComplete,
               disabled={!captchaVerified || isSubmitting}
               className={`px-8 py-3 rounded-xl text-xs sm:text-sm font-extrabold flex items-center gap-2 shadow-md transition-all ${
                 captchaVerified && !isSubmitting
-                  ? 'bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer hover:shadow-lg border border-emerald-700'
+                  ? 'bg-jan-700 hover:bg-jan-800 text-white cursor-pointer hover:shadow-lg border border-jan-800'
                   : 'bg-slate-300 text-slate-600 border border-slate-400 cursor-not-allowed'
               }`}
             >

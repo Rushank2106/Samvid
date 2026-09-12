@@ -465,11 +465,11 @@ export const SchemeDetailsModal: React.FC<Props> = ({
               onClick={() => onToggleSave(scheme.id)}
               className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold border flex items-center gap-1.5 transition-all shadow-xs cursor-pointer ${
                 isSaved
-                  ? 'bg-amber-100 text-amber-900 border-amber-300'
+                  ? 'bg-jan-50 text-jan-700 border-jan-300'
                   : 'bg-white border-slate-300 text-slate-800 hover:bg-slate-100'
               }`}
             >
-              <Bookmark className={`w-4 h-4 ${isSaved ? 'fill-amber-600 text-amber-600' : 'text-slate-700'}`} />
+              <Bookmark className={`w-4 h-4 ${isSaved ? 'fill-jan-600 text-jan-600' : 'text-slate-700'}`} />
               <span>{isSaved ? 'Saved' : 'Save Scheme'}</span>
             </button>
 
