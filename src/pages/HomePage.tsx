@@ -20,6 +20,7 @@ import { MOCK_LIFE_EVENTS } from '../data/mockLifeEvents';
 import { getTranslationDictionary } from '../data/translations';
 import { Language, SchemeCategory } from '../types';
 import { SAMVIDA_LOGO_DATA_URI } from '../assets/samvidaLogoDataUri';
+import { SAMVIDA_LOGO_PNG_DATA_URI } from '../assets/samvidaLogoPngDataUri';
 
 interface Props {
   onStartEligibility: () => void;
@@ -56,38 +57,53 @@ export const HomePage: React.FC<Props> = ({
 
   return (
     <div className="space-y-16 pb-12">
-      {/* 1. HERO SECTION WITH TRICOLOUR ACCENT */}
+      {/* 1. HERO SECTION WITH TRICOLOUR ACCENT & RIGHT-SIDE EMBLEM */}
       <section className="relative bg-gradient-to-b from-navy-950 via-slate-900 to-slate-900 text-white rounded-3xl p-8 sm:p-14 overflow-hidden border border-slate-800 shadow-xl border-t-4 border-t-saffron-500">
-        <div className="max-w-3xl space-y-6 relative z-10">
-          <div className="inline-flex items-center gap-2.5 bg-slate-900/90 border border-saffron-500/60 px-4 py-1.5 rounded-full text-xs font-bold text-saffron-300 backdrop-blur-md">
-            <img src={SAMVIDA_LOGO_DATA_URI} alt="Samvida Logo" className="w-5 h-5 rounded-full object-contain bg-white p-0.5 border border-saffron-400" />
-            <span>SAMVIDA Track — AI Multilingual Citizen Navigator</span>
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 relative z-10">
+          {/* Left Column Content */}
+          <div className="max-w-2xl space-y-6 flex-1">
+            <div className="inline-flex items-center gap-2.5 bg-slate-900/90 border border-saffron-500/60 px-4 py-1.5 rounded-full text-xs font-bold text-saffron-300 backdrop-blur-md">
+              <img src={SAMVIDA_LOGO_DATA_URI} alt="Samvida Logo" className="w-5 h-5 rounded-full object-contain bg-white p-0.5 border border-saffron-400" />
+              <span>SAMVIDA Track — AI Multilingual Citizen Navigator</span>
+            </div>
+
+            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+              {t.hero_title || 'Find the government benefits that may be relevant to you.'}
+            </h1>
+
+            <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl font-normal">
+              {t.hero_subtitle || 'Discover central and state government schemes based on your profile.'}
+            </p>
+
+            <div className="flex flex-wrap items-center gap-4 pt-4">
+              <button
+                onClick={onStartEligibility}
+                className="bg-saffron-500 hover:bg-saffron-600 text-white font-extrabold px-8 py-4 rounded-xl text-sm sm:text-base shadow-lg hover:shadow-saffron-500/30 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2 cursor-pointer"
+              >
+                <UserCheck className="w-5 h-5" />
+                <span>{t.cta_check_eligibility || 'Check My Eligibility'}</span>
+              </button>
+
+              <button
+                onClick={() => onExploreSchemes()}
+                className="bg-slate-800/90 hover:bg-slate-700 text-slate-200 border border-slate-700 font-extrabold px-7 py-4 rounded-xl text-sm sm:text-base hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2 cursor-pointer"
+              >
+                <Search className="w-5 h-5 text-saffron-400" />
+                <span>{t.cta_explore_schemes || 'Explore Schemes'}</span>
+              </button>
+            </div>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
-            {t.hero_title || 'Find the government benefits that may be relevant to you.'}
-          </h1>
-
-          <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl font-normal">
-            {t.hero_subtitle || 'Discover central and state government schemes based on your profile.'}
-          </p>
-
-          <div className="flex flex-wrap items-center gap-4 pt-4">
-            <button
-              onClick={onStartEligibility}
-              className="bg-saffron-500 hover:bg-saffron-600 text-white font-extrabold px-8 py-4 rounded-xl text-sm sm:text-base shadow-lg hover:shadow-saffron-500/30 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2 cursor-pointer"
-            >
-              <UserCheck className="w-5 h-5" />
-              <span>{t.cta_check_eligibility || 'Check My Eligibility'}</span>
-            </button>
-
-            <button
-              onClick={() => onExploreSchemes()}
-              className="bg-slate-800/90 hover:bg-slate-700 text-slate-200 border border-slate-700 font-extrabold px-7 py-4 rounded-xl text-sm sm:text-base hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2 cursor-pointer"
-            >
-              <Search className="w-5 h-5 text-saffron-400" />
-              <span>{t.cta_explore_schemes || 'Explore Schemes'}</span>
-            </button>
+          {/* Right Column: SAMVIDA Emblem Showcase */}
+          <div className="hidden lg:flex items-center justify-center flex-shrink-0 w-80 h-80 relative group">
+            <div className="absolute inset-0 bg-gradient-to-tr from-saffron-500/25 via-white/10 to-indiagreen-500/25 rounded-full blur-2xl group-hover:scale-110 transition-transform duration-500" />
+            <div className="relative z-10 bg-white p-3 rounded-full border-4 border-saffron-400 shadow-2xl transition-all duration-300 w-72 h-72 flex items-center justify-center">
+              <img
+                src={SAMVIDA_LOGO_DATA_URI}
+                alt="SAMVIDA Official Government Scheme Emblem"
+                className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-xl rounded-full"
+              />
+            </div>
           </div>
         </div>
 
