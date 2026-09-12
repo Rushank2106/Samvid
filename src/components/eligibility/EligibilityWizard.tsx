@@ -467,10 +467,10 @@ export const EligibilityWizard: React.FC<Props> = ({ initialProfile, onComplete,
             <button
               type="button"
               onClick={() => setStep(step - 1)}
-              className="px-4 py-2.5 border border-slate-300 rounded-xl text-xs font-semibold text-slate-700 hover:bg-slate-50 flex items-center gap-1.5 transition-colors"
+              className="px-5 py-2.5 border-2 border-slate-300 rounded-xl text-xs sm:text-sm font-extrabold text-slate-800 bg-white hover:bg-slate-100 flex items-center gap-1.5 transition-all shadow-xs cursor-pointer"
             >
-              <ArrowLeft className="w-4 h-4" />
-              Back
+              <ArrowLeft className="w-4 h-4 text-slate-700" />
+              <span>Back</span>
             </button>
           ) : (
             <div />
@@ -480,7 +480,7 @@ export const EligibilityWizard: React.FC<Props> = ({ initialProfile, onComplete,
             <button
               type="button"
               onClick={() => setStep(step + 1)}
-              className="px-6 py-2.5 bg-jan-700 hover:bg-jan-800 text-white rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 shadow-sm transition-all"
+              className="px-7 py-2.5 bg-jan-700 hover:bg-jan-800 text-white rounded-xl text-xs sm:text-sm font-extrabold flex items-center gap-2 shadow-md hover:shadow-lg transition-all cursor-pointer border border-jan-800"
             >
               <span>Continue</span>
               <ArrowRight className="w-4 h-4" />
@@ -489,10 +489,10 @@ export const EligibilityWizard: React.FC<Props> = ({ initialProfile, onComplete,
             <button
               type="submit"
               disabled={!captchaVerified || isSubmitting}
-              className={`px-8 py-3 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 shadow-md transition-all ${
+              className={`px-8 py-3 rounded-xl text-xs sm:text-sm font-extrabold flex items-center gap-2 shadow-md transition-all ${
                 captchaVerified && !isSubmitting
-                  ? 'bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer'
-                  : 'bg-slate-300 text-slate-500 cursor-not-allowed'
+                  ? 'bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer hover:shadow-lg border border-emerald-700'
+                  : 'bg-slate-300 text-slate-600 border border-slate-400 cursor-not-allowed'
               }`}
             >
               <Sparkles className="w-4 h-4" />

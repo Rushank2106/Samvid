@@ -463,13 +463,13 @@ export const SchemeDetailsModal: React.FC<Props> = ({
           <div className="flex items-center gap-2">
             <button
               onClick={() => onToggleSave(scheme.id)}
-              className={`px-3.5 py-2 rounded-xl text-xs font-semibold border flex items-center gap-1.5 transition-colors ${
+              className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold border flex items-center gap-1.5 transition-all shadow-xs cursor-pointer ${
                 isSaved
-                  ? 'bg-jan-50 text-jan-700 border-jan-300 font-bold'
-                  : 'bg-white border-slate-300 text-slate-700 hover:bg-slate-100'
+                  ? 'bg-amber-100 text-amber-900 border-amber-300'
+                  : 'bg-white border-slate-300 text-slate-800 hover:bg-slate-100'
               }`}
             >
-              <Bookmark className={`w-4 h-4 ${isSaved ? 'fill-jan-600' : ''}`} />
+              <Bookmark className={`w-4 h-4 ${isSaved ? 'fill-amber-600 text-amber-600' : 'text-slate-700'}`} />
               <span>{isSaved ? 'Saved' : 'Save Scheme'}</span>
             </button>
 
@@ -477,7 +477,7 @@ export const SchemeDetailsModal: React.FC<Props> = ({
               onClick={() => {
                 onAddToTracker(scheme.id, scheme.name, scheme.official_url);
               }}
-              className="px-3.5 py-2 rounded-xl text-xs font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-slate-100 flex items-center gap-1.5 transition-colors"
+              className="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold bg-white border-2 border-slate-300 text-slate-800 hover:bg-slate-100 hover:border-slate-400 flex items-center gap-1.5 transition-all shadow-xs cursor-pointer"
             >
               <PlusCircle className="w-4 h-4 text-jan-600" />
               <span>Add to Application Tracker</span>
@@ -488,7 +488,7 @@ export const SchemeDetailsModal: React.FC<Props> = ({
             href={scheme.official_url}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-2.5 bg-jan-700 hover:bg-jan-800 text-white rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 shadow-md transition-all"
+            className="px-6 py-2.5 bg-jan-700 hover:bg-jan-800 text-white rounded-xl text-xs sm:text-sm font-extrabold flex items-center gap-2 shadow-md hover:shadow-lg transition-all border border-jan-800 cursor-pointer"
           >
             <span>Apply on Official Website</span>
             <ExternalLink className="w-4 h-4" />
