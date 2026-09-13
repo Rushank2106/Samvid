@@ -7,7 +7,6 @@ import {
   AlertCircle,
   FileText,
   Sparkles,
-  HelpCircle,
   Calendar,
   Bookmark,
   PlusCircle,
@@ -40,7 +39,7 @@ export const SchemeDetailsModal: React.FC<Props> = ({
 }) => {
   if (!matchResult) return null;
 
-  const { scheme, matchStatus, reasons, criteria, missingCriteria } = matchResult;
+  const { scheme, matchStatus, reasons, missingCriteria } = matchResult;
   const t = getTranslationDictionary(language);
 
   // Disable background scrolling when modal is active
@@ -84,53 +83,53 @@ export const SchemeDetailsModal: React.FC<Props> = ({
 
   return (
     <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
-      <div className="bg-white border border-slate-200 rounded-2xl w-full max-w-4xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden my-auto">
-        {/* Top Header */}
-        <div className="bg-slate-900 text-white p-5 sm:p-6 flex items-start justify-between gap-4 border-b border-slate-800">
+      <div className="bg-white border border-slate-200 rounded-3xl w-full max-w-4xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden my-auto border-t-4 border-t-saffron-500">
+        {/* Top Header matching Home Page dark theme */}
+        <div className="bg-gradient-to-b from-navy-950 via-slate-900 to-slate-900 text-white p-5 sm:p-6 flex items-start justify-between gap-4 border-b border-slate-800">
           <div className="space-y-1.5">
             <div className="flex flex-wrap items-center gap-2">
               <span
-                className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider ${
+                className={`text-[11px] font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-wider ${
                   scheme.government_level === 'Central'
-                    ? 'bg-jan-600 text-white'
-                    : 'bg-emerald-600 text-white'
+                    ? 'bg-saffron-500 text-white shadow-2xs'
+                    : 'bg-indiagreen-600 text-white shadow-2xs'
                 }`}
               >
                 {scheme.government_level} Government
               </span>
               {scheme.state && (
-                <span className="bg-slate-800 text-slate-300 text-[11px] font-medium px-2.5 py-0.5 rounded-full border border-slate-700">
+                <span className="bg-slate-800 text-slate-300 text-[11px] font-bold px-2.5 py-0.5 rounded-full border border-slate-700">
                   {scheme.state}
                 </span>
               )}
-              <span className="bg-slate-800 text-slate-300 text-[11px] font-medium px-2 py-0.5 rounded border border-slate-700">
+              <span className="bg-slate-800 text-slate-300 text-[11px] font-bold px-2 py-0.5 rounded border border-slate-700">
                 {scheme.category}
               </span>
             </div>
             <h2 className="text-lg sm:text-xl font-extrabold text-white leading-snug">
               {scheme.name}
             </h2>
-            <p className="text-xs text-slate-300 flex items-center gap-1.5">
-              <Building2 className="w-3.5 h-3.5 text-jan-400" />
+            <p className="text-xs text-slate-300 flex items-center gap-1.5 font-medium">
+              <Building2 className="w-3.5 h-3.5 text-saffron-400" />
               <span>{scheme.department}</span>
             </p>
           </div>
 
           <button
             onClick={onClose}
-            className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+            className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Modal Tab Controls */}
-        <div className="flex border-b border-slate-200 bg-slate-50 px-6 pt-3 text-xs font-semibold">
+        <div className="flex border-b border-slate-200 bg-slate-50 px-6 pt-3 text-xs font-extrabold">
           <button
             onClick={() => setActiveTab('overview')}
-            className={`pb-3 px-4 border-b-2 transition-colors ${
+            className={`pb-3 px-4 border-b-2 transition-all cursor-pointer ${
               activeTab === 'overview'
-                ? 'border-jan-600 text-jan-700 font-bold'
+                ? 'border-saffron-500 text-saffron-700 font-extrabold'
                 : 'border-transparent text-slate-600 hover:text-slate-900'
             }`}
           >
@@ -138,9 +137,9 @@ export const SchemeDetailsModal: React.FC<Props> = ({
           </button>
           <button
             onClick={() => setActiveTab('readiness')}
-            className={`pb-3 px-4 border-b-2 transition-colors flex items-center gap-1.5 ${
+            className={`pb-3 px-4 border-b-2 transition-all flex items-center gap-1.5 cursor-pointer ${
               activeTab === 'readiness'
-                ? 'border-jan-600 text-jan-700 font-bold'
+                ? 'border-saffron-500 text-saffron-700 font-extrabold'
                 : 'border-transparent text-slate-600 hover:text-slate-900'
             }`}
           >
@@ -149,9 +148,9 @@ export const SchemeDetailsModal: React.FC<Props> = ({
           </button>
           <button
             onClick={() => setActiveTab('action-plan')}
-            className={`pb-3 px-4 border-b-2 transition-colors flex items-center gap-1.5 ${
+            className={`pb-3 px-4 border-b-2 transition-all flex items-center gap-1.5 cursor-pointer ${
               activeTab === 'action-plan'
-                ? 'border-jan-600 text-jan-700 font-bold'
+                ? 'border-saffron-500 text-saffron-700 font-extrabold'
                 : 'border-transparent text-slate-600 hover:text-slate-900'
             }`}
           >
@@ -167,38 +166,38 @@ export const SchemeDetailsModal: React.FC<Props> = ({
             <div className="space-y-6">
               {/* Description */}
               <div>
-                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">
+                <h3 className="text-xs font-extrabold uppercase tracking-wider text-slate-400 mb-1.5">
                   What is this scheme?
                 </h3>
-                <p className="text-slate-700 leading-relaxed bg-slate-50 p-4 rounded-xl border border-slate-200">
+                <p className="text-slate-700 leading-relaxed bg-slate-50 p-4 rounded-2xl border border-slate-200 font-medium">
                   {scheme.description}
                 </p>
               </div>
 
               {/* Key Benefits */}
               <div>
-                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
+                <h3 className="text-xs font-extrabold uppercase tracking-wider text-slate-400 mb-2">
                   Key Benefits & Support
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                   {scheme.benefits.map((b, i) => (
                     <div
                       key={i}
-                      className="bg-emerald-50/70 border border-emerald-200/80 p-3 rounded-xl flex items-start gap-2.5"
+                      className="bg-indiagreen-50/70 border border-indiagreen-200/80 p-3 rounded-xl flex items-start gap-2.5"
                     >
-                      <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-slate-800 font-medium text-xs leading-snug">{b}</span>
+                      <CheckCircle2 className="w-4 h-4 text-indiagreen-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-slate-800 font-bold text-xs leading-snug">{b}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* AI Explainer Section */}
-              <div className="bg-jan-50/70 border border-jan-200 p-4 rounded-xl space-y-3">
+              <div className="bg-saffron-50/80 border border-saffron-200 p-4 rounded-2xl space-y-3">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <Sparkles className="w-4 h-4 text-jan-600" />
-                    <span className="font-bold text-jan-900 text-xs sm:text-sm">
+                    <Sparkles className="w-4 h-4 text-saffron-600" />
+                    <span className="font-extrabold text-saffron-900 text-xs sm:text-sm">
                       AI Scheme Explainer (Simple Citizen Language)
                     </span>
                   </div>
@@ -206,7 +205,7 @@ export const SchemeDetailsModal: React.FC<Props> = ({
                     <button
                       onClick={handleExplainAI}
                       disabled={loadingAi}
-                      className="bg-jan-700 hover:bg-jan-800 text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow-sm transition-colors"
+                      className="bg-saffron-500 hover:bg-saffron-600 text-white text-xs font-extrabold px-4 py-2 rounded-xl shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
                     >
                       {loadingAi ? 'Generating...' : 'Explain This Scheme'}
                     </button>
@@ -214,7 +213,7 @@ export const SchemeDetailsModal: React.FC<Props> = ({
                 </div>
 
                 {aiExplanation && (
-                  <div className="bg-white p-4 rounded-lg border border-jan-200 text-xs sm:text-sm text-slate-800 whitespace-pre-line leading-relaxed shadow-inner">
+                  <div className="bg-white p-4 rounded-xl border border-saffron-200 text-xs sm:text-sm text-slate-800 whitespace-pre-line leading-relaxed shadow-inner font-medium">
                     {aiExplanation}
                   </div>
                 )}
@@ -222,16 +221,16 @@ export const SchemeDetailsModal: React.FC<Props> = ({
 
               {/* Eligibility Breakdown */}
               <div>
-                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
+                <h3 className="text-xs font-extrabold uppercase tracking-wider text-slate-400 mb-2">
                   Personalized Eligibility Breakdown
                 </h3>
-                <div className="bg-white border border-slate-200 rounded-xl p-4 space-y-3">
+                <div className="bg-white border border-slate-200 rounded-2xl p-4 space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-slate-700">Status Estimate:</span>
+                    <span className="text-xs font-extrabold text-slate-800">Status Estimate:</span>
                     <span
-                      className={`text-xs font-bold px-2.5 py-0.5 rounded ${
+                      className={`text-xs font-extrabold px-2.5 py-0.5 rounded ${
                         matchStatus === 'Likely Eligible'
-                          ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
+                          ? 'bg-indiagreen-100 text-indiagreen-900 border border-indiagreen-300'
                           : 'bg-amber-100 text-amber-900 border border-amber-300'
                       }`}
                     >
@@ -240,10 +239,10 @@ export const SchemeDetailsModal: React.FC<Props> = ({
                   </div>
 
                   <div className="space-y-1.5 pt-2 border-t border-slate-100">
-                    <p className="text-xs font-semibold text-slate-600">Satisfied Criteria:</p>
+                    <p className="text-xs font-bold text-slate-700">Satisfied Criteria:</p>
                     {reasons.map((r, i) => (
-                      <div key={i} className="flex items-center gap-2 text-xs text-slate-700">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                      <div key={i} className="flex items-center gap-2 text-xs text-slate-700 font-medium">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-indiagreen-600" />
                         <span>{r}</span>
                       </div>
                     ))}
@@ -251,9 +250,9 @@ export const SchemeDetailsModal: React.FC<Props> = ({
 
                   {missingCriteria.length > 0 && (
                     <div className="space-y-1.5 pt-2 border-t border-slate-100 text-amber-900">
-                      <p className="text-xs font-semibold text-amber-800">Unmet or Additional Criteria:</p>
+                      <p className="text-xs font-bold text-amber-800">Unmet or Additional Criteria:</p>
                       {missingCriteria.map((m, i) => (
-                        <div key={i} className="flex items-center gap-2 text-xs text-amber-800">
+                        <div key={i} className="flex items-center gap-2 text-xs text-amber-800 font-medium">
                           <AlertCircle className="w-3.5 h-3.5 text-amber-600" />
                           <span>{m}</span>
                         </div>
@@ -261,7 +260,7 @@ export const SchemeDetailsModal: React.FC<Props> = ({
                     </div>
                   )}
 
-                  <div className="bg-slate-100 p-2.5 rounded-lg text-[11px] text-slate-500 flex items-center gap-1.5 italic">
+                  <div className="bg-slate-100 p-2.5 rounded-lg text-[11px] text-slate-600 flex items-center gap-1.5 italic">
                     <Info className="w-3.5 h-3.5 text-slate-400 flex-shrink-0" />
                     <span>
                       Eligibility shown here is an informational estimate. Final eligibility is determined by the relevant government authority.
@@ -276,9 +275,9 @@ export const SchemeDetailsModal: React.FC<Props> = ({
           {activeTab === 'readiness' && (
             <div className="space-y-6">
               {/* Score Header */}
-              <div className="bg-slate-900 text-white p-5 rounded-xl flex items-center justify-between gap-4">
+              <div className="bg-gradient-to-b from-navy-950 via-slate-900 to-slate-900 text-white p-5 rounded-2xl flex items-center justify-between gap-4 border border-slate-800">
                 <div>
-                  <h4 className="text-sm font-bold text-slate-300 uppercase tracking-wider mb-1">
+                  <h4 className="text-sm font-extrabold text-saffron-300 uppercase tracking-wider mb-1">
                     Application Readiness Score
                   </h4>
                   <p className="text-2xl font-extrabold text-white">{readinessPercent}% Ready</p>
@@ -288,14 +287,14 @@ export const SchemeDetailsModal: React.FC<Props> = ({
                       : 'You indicate having all required documents!'}
                   </p>
                 </div>
-                <div className="w-16 h-16 rounded-full border-4 border-jan-500 flex items-center justify-center font-bold text-lg text-white">
+                <div className="w-16 h-16 rounded-full border-4 border-saffron-500 flex items-center justify-center font-extrabold text-lg text-white shadow-md">
                   {readinessPercent}%
                 </div>
               </div>
 
               {/* Interactive Document Checklist */}
               <div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">
+                <h4 className="text-xs font-extrabold uppercase tracking-wider text-slate-400 mb-3">
                   Check the documents you already possess:
                 </h4>
                 <div className="space-y-3">
@@ -304,9 +303,9 @@ export const SchemeDetailsModal: React.FC<Props> = ({
                     return (
                       <div
                         key={doc.id}
-                        className={`p-4 rounded-xl border transition-all ${
+                        className={`p-4 rounded-2xl border transition-all ${
                           isOwned
-                            ? 'bg-emerald-50/50 border-emerald-300'
+                            ? 'bg-indiagreen-50/50 border-indiagreen-300'
                             : 'bg-white border-slate-200 hover:border-slate-300'
                         }`}
                       >
@@ -316,25 +315,25 @@ export const SchemeDetailsModal: React.FC<Props> = ({
                               type="checkbox"
                               checked={isOwned}
                               onChange={() => toggleDocOwned(doc.id)}
-                              className="w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500 mt-1"
+                              className="w-4 h-4 text-indiagreen-600 rounded border-slate-300 focus:ring-indiagreen-500 mt-1"
                             />
                             <div>
                               <div className="flex items-center gap-2">
-                                <span className="font-bold text-slate-900 text-xs sm:text-sm">
+                                <span className="font-extrabold text-slate-900 text-xs sm:text-sm">
                                   {doc.document_name}
                                 </span>
                                 {doc.mandatory ? (
-                                  <span className="bg-rose-100 text-rose-800 text-[10px] font-bold px-2 py-0.5 rounded">
+                                  <span className="bg-rose-100 text-rose-800 text-[10px] font-extrabold px-2 py-0.5 rounded">
                                     Mandatory
                                   </span>
                                 ) : (
-                                  <span className="bg-slate-100 text-slate-600 text-[10px] font-medium px-2 py-0.5 rounded">
+                                  <span className="bg-slate-100 text-slate-600 text-[10px] font-bold px-2 py-0.5 rounded">
                                     Optional
                                   </span>
                                 )}
                               </div>
-                              <p className="text-xs text-slate-600 mt-1">{doc.description}</p>
-                              <p className="text-[11px] text-slate-400 mt-1">
+                              <p className="text-xs text-slate-600 mt-1 font-medium">{doc.description}</p>
+                              <p className="text-[11px] text-slate-400 mt-1 font-mono">
                                 Issuing Authority: {doc.issuing_authority || 'Competent State Authority'}
                               </p>
                             </div>
@@ -343,7 +342,7 @@ export const SchemeDetailsModal: React.FC<Props> = ({
                           {!isOwned && (
                             <button
                               onClick={() => setSelectedMissingDoc(doc)}
-                              className="bg-jan-50 hover:bg-jan-100 text-jan-700 text-xs font-semibold px-3 py-1.5 rounded-lg border border-jan-200 flex-shrink-0 transition-colors"
+                              className="bg-saffron-50 hover:bg-saffron-100 text-saffron-800 text-xs font-extrabold px-3 py-1.5 rounded-xl border border-saffron-300 flex-shrink-0 transition-colors cursor-pointer"
                             >
                               How to Obtain
                             </button>
@@ -355,11 +354,11 @@ export const SchemeDetailsModal: React.FC<Props> = ({
                 </div>
               </div>
 
-              {/* Document Preparation Guide Modal / Sub-section */}
+              {/* Document Preparation Guide */}
               {selectedMissingDoc && (() => {
                 const docSrc = getDocumentSourceInfo(selectedMissingDoc.document_name);
                 return (
-                  <div className="bg-amber-50 border border-amber-300 p-4 rounded-xl space-y-3 animate-in fade-in">
+                  <div className="bg-amber-50 border border-amber-300 p-4 rounded-2xl space-y-3">
                     <div className="flex items-center justify-between">
                       <h5 className="font-extrabold text-amber-900 text-xs sm:text-sm flex items-center gap-1.5">
                         <FileCheck className="w-4 h-4 text-amber-600" />
@@ -367,12 +366,12 @@ export const SchemeDetailsModal: React.FC<Props> = ({
                       </h5>
                       <button
                         onClick={() => setSelectedMissingDoc(null)}
-                        className="text-xs text-amber-800 hover:text-amber-950 underline font-bold cursor-pointer"
+                        className="text-xs text-amber-800 hover:text-amber-950 underline font-extrabold cursor-pointer"
                       >
                         Close
                       </button>
                     </div>
-                    <p className="text-xs text-amber-950 leading-relaxed">
+                    <p className="text-xs text-amber-950 leading-relaxed font-medium">
                       <strong>Method to Obtain:</strong> {docSrc.how_to_obtain}
                     </p>
                     <p className="text-[11px] text-amber-900">
@@ -383,7 +382,7 @@ export const SchemeDetailsModal: React.FC<Props> = ({
                         href={docSrc.official_link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 bg-amber-600 hover:bg-amber-700 text-white font-extrabold text-xs px-4 py-2 rounded-lg shadow-sm hover:scale-[1.02] transition-all cursor-pointer"
+                        className="inline-flex items-center gap-1.5 bg-amber-600 hover:bg-amber-700 text-white font-extrabold text-xs px-4 py-2 rounded-xl shadow-sm hover:scale-[1.02] transition-all cursor-pointer"
                       >
                         <ExternalLink className="w-4 h-4" />
                         <span>{docSrc.button_label}</span>
@@ -398,7 +397,7 @@ export const SchemeDetailsModal: React.FC<Props> = ({
           {/* TAB 3: ACTION PLAN */}
           {activeTab === 'action-plan' && (
             <div className="space-y-6">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
+              <h3 className="text-xs font-extrabold uppercase tracking-wider text-slate-400 mb-2">
                 Personalized Application Action Plan
               </h3>
               <div className="space-y-4">
@@ -429,13 +428,13 @@ export const SchemeDetailsModal: React.FC<Props> = ({
                     desc: 'Save application reference ID to track status on official government portal.'
                   }
                 ].map((s) => (
-                  <div key={s.step} className="flex items-start gap-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
-                    <div className="w-7 h-7 rounded-full bg-jan-700 text-white font-bold text-xs flex items-center justify-center flex-shrink-0">
+                  <div key={s.step} className="flex items-start gap-3 bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                    <div className="w-7 h-7 rounded-full bg-saffron-500 text-white font-extrabold text-xs flex items-center justify-center flex-shrink-0 shadow-2xs">
                       {s.step}
                     </div>
                     <div>
-                      <h4 className="font-bold text-slate-900 text-xs sm:text-sm">{s.title}</h4>
-                      <p className="text-xs text-slate-600 mt-0.5">{s.desc}</p>
+                      <h4 className="font-extrabold text-slate-900 text-xs sm:text-sm">{s.title}</h4>
+                      <p className="text-xs text-slate-600 mt-0.5 font-medium">{s.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -444,14 +443,14 @@ export const SchemeDetailsModal: React.FC<Props> = ({
           )}
 
           {/* Source Verification Box */}
-          <div className="bg-slate-100 p-3.5 rounded-xl border border-slate-200 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-600">
+          <div className="bg-slate-100 p-3.5 rounded-2xl border border-slate-200 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-700">
             <div className="flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-emerald-600" />
+              <ShieldCheck className="w-4 h-4 text-indiagreen-600" />
               <span>
                 Information source: <strong>{scheme.source_name}</strong> ({scheme.source_type})
               </span>
             </div>
-            <div className="flex items-center gap-1 text-[11px] text-slate-500">
+            <div className="flex items-center gap-1 text-[11px] text-slate-500 font-mono">
               <Calendar className="w-3.5 h-3.5" />
               <span>Last Verified: {scheme.last_verified_at}</span>
             </div>
@@ -465,11 +464,11 @@ export const SchemeDetailsModal: React.FC<Props> = ({
               onClick={() => onToggleSave(scheme.id)}
               className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold border flex items-center gap-1.5 transition-all shadow-xs cursor-pointer ${
                 isSaved
-                  ? 'bg-jan-50 text-jan-700 border-jan-300'
+                  ? 'bg-saffron-50 text-saffron-800 border-saffron-300'
                   : 'bg-white border-slate-300 text-slate-800 hover:bg-slate-100'
               }`}
             >
-              <Bookmark className={`w-4 h-4 ${isSaved ? 'fill-jan-600 text-jan-600' : 'text-slate-700'}`} />
+              <Bookmark className={`w-4 h-4 ${isSaved ? 'fill-saffron-600 text-saffron-600' : 'text-slate-700'}`} />
               <span>{isSaved ? 'Saved' : 'Save Scheme'}</span>
             </button>
 
@@ -477,10 +476,10 @@ export const SchemeDetailsModal: React.FC<Props> = ({
               onClick={() => {
                 onAddToTracker(scheme.id, scheme.name, scheme.official_url);
               }}
-              className="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold bg-white border-2 border-slate-300 text-slate-800 hover:bg-slate-100 hover:border-slate-400 flex items-center gap-1.5 transition-all shadow-xs cursor-pointer"
+              className="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold bg-slate-900 hover:bg-slate-800 text-white flex items-center gap-1.5 transition-all shadow-xs cursor-pointer"
             >
-              <PlusCircle className="w-4 h-4 text-jan-600" />
-              <span>Add to Application Tracker</span>
+              <PlusCircle className="w-4 h-4 text-saffron-400" />
+              <span>Add to Tracker</span>
             </button>
           </div>
 
@@ -488,7 +487,7 @@ export const SchemeDetailsModal: React.FC<Props> = ({
             href={scheme.official_url}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-2.5 bg-jan-700 hover:bg-jan-800 text-white rounded-xl text-xs sm:text-sm font-extrabold flex items-center gap-2 shadow-md hover:shadow-lg transition-all border border-jan-800 cursor-pointer"
+            className="px-6 py-2.5 bg-saffron-500 hover:bg-saffron-600 text-white rounded-xl text-xs sm:text-sm font-extrabold flex items-center gap-2 shadow-md hover:shadow-saffron-500/30 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
           >
             <span>Apply on Official Website</span>
             <ExternalLink className="w-4 h-4" />

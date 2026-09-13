@@ -20,7 +20,7 @@ import {
   SchemeCategory,
   Language
 } from '../../types';
-import { INDIAN_STATES, DISTRICTS_BY_STATE, TRANSLATIONS } from '../../data/translations';
+import { INDIAN_STATES, DISTRICTS_BY_STATE, getTranslationDictionary } from '../../data/translations';
 import { CaptchaWidget } from '../common/CaptchaWidget';
 
 interface Props {
@@ -56,7 +56,7 @@ export const EligibilityWizard: React.FC<Props> = ({ initialProfile, onComplete,
   const [captchaVerified, setCaptchaVerified] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const t = TRANSLATIONS[language] || TRANSLATIONS.en;
+  const t = getTranslationDictionary(language);
 
   const districts = DISTRICTS_BY_STATE[profile.state] || ['District 1', 'District 2', 'District 3'];
 
@@ -91,25 +91,25 @@ export const EligibilityWizard: React.FC<Props> = ({ initialProfile, onComplete,
   };
 
   return (
-    <div className="max-w-3xl mx-auto bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
-      {/* Header & Step Indicator */}
-      <div className="bg-slate-900 text-white p-6 sm:p-8">
+    <div className="max-w-3xl mx-auto bg-white border border-slate-200 rounded-3xl shadow-md overflow-hidden">
+      {/* Header & Step Indicator matching Home Page dark theme */}
+      <div className="bg-gradient-to-b from-navy-950 via-slate-900 to-slate-900 text-white p-6 sm:p-8 border-b border-slate-800 border-t-4 border-t-saffron-500">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
-            <span className="bg-jan-600 text-white text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
+            <span className="bg-slate-900/90 text-saffron-300 text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider border border-saffron-500/60">
               Step {step} of 5
             </span>
-            <span className="text-xs text-slate-400 font-medium hidden sm:inline">
+            <span className="text-xs text-slate-300 font-medium hidden sm:inline">
               Profile Assessment
             </span>
           </div>
-          <div className="flex items-center gap-1 text-xs text-emerald-400 font-medium">
+          <div className="flex items-center gap-1.5 text-xs text-indiagreen-400 font-extrabold bg-slate-800/80 px-2.5 py-1 rounded-full border border-slate-700">
             <Lock className="w-3.5 h-3.5" />
             <span>Confidential & Private</span>
           </div>
         </div>
 
-        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-white mb-2">
+        <h2 className="text-xl sm:text-2xl font-extrabold tracking-tight text-white mb-2">
           {step === 1 && 'Basic Information'}
           {step === 2 && 'Occupation & Employment'}
           {step === 3 && 'Financial Information'}
@@ -124,10 +124,10 @@ export const EligibilityWizard: React.FC<Props> = ({ initialProfile, onComplete,
           {step === 5 && 'Select your primary goals and pass security verification.'}
         </p>
 
-        {/* Progress Bar */}
+        {/* Progress Bar with Saffron Fill */}
         <div className="w-full bg-slate-800 rounded-full h-2 mt-6 overflow-hidden">
           <div
-            className="bg-jan-500 h-2 transition-all duration-300"
+            className="bg-saffron-500 h-2 transition-all duration-300 shadow-sm"
             style={{ width: `${(step / 5) * 100}%` }}
           />
         </div>
@@ -139,8 +139,8 @@ export const EligibilityWizard: React.FC<Props> = ({ initialProfile, onComplete,
         {step === 1 && (
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-semibold text-slate-800 mb-2 flex items-center gap-2">
-                <User className="w-4 h-4 text-jan-600" />
+              <label className="block text-sm font-extrabold text-slate-900 mb-2 flex items-center gap-2">
+                <User className="w-4 h-4 text-saffron-600" />
                 Age Group
               </label>
               <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
@@ -149,9 +149,9 @@ export const EligibilityWizard: React.FC<Props> = ({ initialProfile, onComplete,
                     type="button"
                     key={ag}
                     onClick={() => setProfile({ ...profile, age_group: ag })}
-                    className={`py-3 px-2 rounded-xl text-xs font-semibold text-center border transition-all ${
+                    className={`py-3 px-2 rounded-xl text-xs font-extrabold text-center border transition-all cursor-pointer ${
                       profile.age_group === ag
-                        ? 'bg-jan-50 border-jan-600 text-jan-800 shadow-sm ring-1 ring-jan-600'
+                        ? 'bg-saffron-50 border-saffron-500 text-saffron-900 shadow-xs ring-1 ring-saffron-500'
                         : 'border-slate-200 text-slate-700 hover:bg-slate-50'
                     }`}
                   >
@@ -163,13 +163,13 @@ export const EligibilityWizard: React.FC<Props> = ({ initialProfile, onComplete,
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
               <div>
-                <label className="block text-sm font-semibold text-slate-800 mb-2">
+                <label className="block text-sm font-extrabold text-slate-900 mb-2">
                   State / Union Territory
                 </label>
                 <select
                   value={profile.state}
                   onChange={(e) => handleStateChange(e.target.value)}
-                  className="w-full text-sm border border-slate-300 rounded-xl p-3 bg-white focus:ring-2 focus:ring-jan-500 focus:outline-none"
+                  className="w-full text-sm font-bold border border-slate-300 rounded-xl p-3 bg-white focus:ring-2 focus:ring-saffron-500 focus:outline-none"
                 >
                   {INDIAN_STATES.map((st) => (
                     <option key={st} value={st}>
@@ -180,13 +180,13 @@ export const EligibilityWizard: React.FC<Props> = ({ initialProfile, onComplete,
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-slate-800 mb-2">
+                <label className="block text-sm font-extrabold text-slate-900 mb-2">
                   District
                 </label>
                 <select
                   value={profile.district}
                   onChange={(e) => setProfile({ ...profile, district: e.target.value })}
-                  className="w-full text-sm border border-slate-300 rounded-xl p-3 bg-white focus:ring-2 focus:ring-jan-500 focus:outline-none"
+                  className="w-full text-sm font-bold border border-slate-300 rounded-xl p-3 bg-white focus:ring-2 focus:ring-saffron-500 focus:outline-none"
                 >
                   {districts.map((dist) => (
                     <option key={dist} value={dist}>
@@ -203,8 +203,8 @@ export const EligibilityWizard: React.FC<Props> = ({ initialProfile, onComplete,
         {step === 2 && (
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-semibold text-slate-800 mb-2 flex items-center gap-2">
-                <Briefcase className="w-4 h-4 text-jan-600" />
+              <label className="block text-sm font-extrabold text-slate-900 mb-2 flex items-center gap-2">
+                <Briefcase className="w-4 h-4 text-saffron-600" />
                 Primary Occupation
               </label>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
@@ -225,9 +225,9 @@ export const EligibilityWizard: React.FC<Props> = ({ initialProfile, onComplete,
                     type="button"
                     key={occ}
                     onClick={() => setProfile({ ...profile, occupation: occ as Occupation })}
-                    className={`py-3 px-3 rounded-xl text-xs font-semibold text-left border transition-all ${
+                    className={`py-3 px-3 rounded-xl text-xs font-extrabold text-left border transition-all cursor-pointer ${
                       profile.occupation === occ
-                        ? 'bg-jan-50 border-jan-600 text-jan-800 shadow-sm ring-1 ring-jan-600'
+                        ? 'bg-saffron-50 border-saffron-500 text-saffron-900 shadow-xs ring-1 ring-saffron-500'
                         : 'border-slate-200 text-slate-700 hover:bg-slate-50'
                     }`}
                   >
@@ -238,7 +238,7 @@ export const EligibilityWizard: React.FC<Props> = ({ initialProfile, onComplete,
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-slate-800 mb-2">
+              <label className="block text-sm font-extrabold text-slate-900 mb-2">
                 Employment Type
               </label>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -248,9 +248,9 @@ export const EligibilityWizard: React.FC<Props> = ({ initialProfile, onComplete,
                       type="button"
                       key={emp}
                       onClick={() => setProfile({ ...profile, employment_type: emp as EmploymentType })}
-                      className={`py-2.5 px-3 rounded-lg text-xs font-medium border text-center transition-all ${
+                      className={`py-2.5 px-3 rounded-xl text-xs font-extrabold border text-center transition-all cursor-pointer ${
                         profile.employment_type === emp
-                          ? 'bg-slate-900 text-white border-slate-900 font-semibold'
+                          ? 'bg-slate-900 text-white border-slate-900 shadow-xs'
                           : 'border-slate-200 text-slate-700 hover:bg-slate-50'
                       }`}
                     >
@@ -267,8 +267,8 @@ export const EligibilityWizard: React.FC<Props> = ({ initialProfile, onComplete,
         {step === 3 && (
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-semibold text-slate-800 mb-2 flex items-center gap-2">
-                <Wallet className="w-4 h-4 text-jan-600" />
+              <label className="block text-sm font-extrabold text-slate-900 mb-2 flex items-center gap-2">
+                <Wallet className="w-4 h-4 text-saffron-600" />
                 Annual Household Income Range
               </label>
               <p className="text-xs text-slate-500 mb-3">
@@ -287,15 +287,15 @@ export const EligibilityWizard: React.FC<Props> = ({ initialProfile, onComplete,
                     type="button"
                     key={inc}
                     onClick={() => setProfile({ ...profile, income_range: inc as IncomeRange })}
-                    className={`w-full py-3 px-4 rounded-xl text-xs sm:text-sm font-medium text-left border flex items-center justify-between transition-all ${
+                    className={`w-full py-3 px-4 rounded-xl text-xs sm:text-sm font-extrabold text-left border flex items-center justify-between transition-all cursor-pointer ${
                       profile.income_range === inc
-                        ? 'bg-jan-50 border-jan-600 text-jan-900 font-bold shadow-sm'
+                        ? 'bg-saffron-50 border-saffron-500 text-saffron-900 shadow-xs'
                         : 'border-slate-200 text-slate-700 hover:bg-slate-50'
                     }`}
                   >
                     <span>{inc}</span>
                     {profile.income_range === inc && (
-                      <CheckCircle2 className="w-4 h-4 text-jan-600" />
+                      <CheckCircle2 className="w-4 h-4 text-saffron-600" />
                     )}
                   </button>
                 ))}
@@ -308,8 +308,8 @@ export const EligibilityWizard: React.FC<Props> = ({ initialProfile, onComplete,
         {step === 4 && (
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-semibold text-slate-800 mb-2 flex items-center gap-2">
-                <Users className="w-4 h-4 text-jan-600" />
+              <label className="block text-sm font-extrabold text-slate-900 mb-2 flex items-center gap-2">
+                <Users className="w-4 h-4 text-saffron-600" />
                 Family Composition & Circumstances
               </label>
               <p className="text-xs text-slate-500 mb-4">
@@ -330,9 +330,9 @@ export const EligibilityWizard: React.FC<Props> = ({ initialProfile, onComplete,
                         }
                       })
                     }
-                    className="w-4 h-4 text-jan-600 rounded border-slate-300 focus:ring-jan-500"
+                    className="w-4 h-4 text-saffron-600 rounded border-slate-300 focus:ring-saffron-500"
                   />
-                  <span className="text-xs font-semibold text-slate-800">
+                  <span className="text-xs font-bold text-slate-800">
                     Children in family (School/College)
                   </span>
                 </label>
@@ -350,9 +350,9 @@ export const EligibilityWizard: React.FC<Props> = ({ initialProfile, onComplete,
                         }
                       })
                     }
-                    className="w-4 h-4 text-jan-600 rounded border-slate-300 focus:ring-jan-500"
+                    className="w-4 h-4 text-saffron-600 rounded border-slate-300 focus:ring-saffron-500"
                   />
-                  <span className="text-xs font-semibold text-slate-800">
+                  <span className="text-xs font-bold text-slate-800">
                     Senior Citizens (Age 60+)
                   </span>
                 </label>
@@ -370,9 +370,9 @@ export const EligibilityWizard: React.FC<Props> = ({ initialProfile, onComplete,
                         }
                       })
                     }
-                    className="w-4 h-4 text-jan-600 rounded border-slate-300 focus:ring-jan-500"
+                    className="w-4 h-4 text-saffron-600 rounded border-slate-300 focus:ring-saffron-500"
                   />
-                  <span className="text-xs font-semibold text-slate-800">
+                  <span className="text-xs font-bold text-slate-800">
                     Persons with Disabilities (PwD)
                   </span>
                 </label>
@@ -390,9 +390,9 @@ export const EligibilityWizard: React.FC<Props> = ({ initialProfile, onComplete,
                         }
                       })
                     }
-                    className="w-4 h-4 text-jan-600 rounded border-slate-300 focus:ring-jan-500"
+                    className="w-4 h-4 text-saffron-600 rounded border-slate-300 focus:ring-saffron-500"
                   />
-                  <span className="text-xs font-semibold text-slate-800">
+                  <span className="text-xs font-bold text-slate-800">
                     Single-parent / Widow household
                   </span>
                 </label>
@@ -405,8 +405,8 @@ export const EligibilityWizard: React.FC<Props> = ({ initialProfile, onComplete,
         {step === 5 && (
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-semibold text-slate-800 mb-2 flex items-center gap-2">
-                <Target className="w-4 h-4 text-jan-600" />
+              <label className="block text-sm font-extrabold text-slate-900 mb-2 flex items-center gap-2">
+                <Target className="w-4 h-4 text-saffron-600" />
                 Select Preferred Support Categories
               </label>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
@@ -430,14 +430,14 @@ export const EligibilityWizard: React.FC<Props> = ({ initialProfile, onComplete,
                       type="button"
                       key={cat}
                       onClick={() => handleGoalToggle(cat as SchemeCategory)}
-                      className={`py-2.5 px-3 rounded-xl text-xs font-medium border text-left flex items-center justify-between transition-all ${
+                      className={`py-2.5 px-3 rounded-xl text-xs font-extrabold border text-left flex items-center justify-between transition-all cursor-pointer ${
                         isSel
-                          ? 'bg-jan-50 border-jan-600 text-jan-800 font-bold ring-1 ring-jan-600'
+                          ? 'bg-saffron-50 border-saffron-500 text-saffron-900 shadow-xs ring-1 ring-saffron-500'
                           : 'border-slate-200 text-slate-700 hover:bg-slate-50'
                       }`}
                     >
                       <span>{cat}</span>
-                      {isSel && <CheckCircle2 className="w-3.5 h-3.5 text-jan-600" />}
+                      {isSel && <CheckCircle2 className="w-3.5 h-3.5 text-saffron-600" />}
                     </button>
                   );
                 })}
@@ -445,14 +445,14 @@ export const EligibilityWizard: React.FC<Props> = ({ initialProfile, onComplete,
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-slate-800 mb-1">
+              <label className="block text-sm font-extrabold text-slate-900 mb-1">
                 Tell us what specific support you are looking for (Optional)
               </label>
               <textarea
                 value={profile.specific_query || ''}
                 onChange={(e) => setProfile({ ...profile, specific_query: e.target.value })}
                 placeholder="Example: I am a farmer looking for financial assistance for irrigation and land machinery..."
-                className="w-full border border-slate-300 rounded-xl p-3 text-xs sm:text-sm focus:ring-2 focus:ring-jan-500 focus:outline-none h-20"
+                className="w-full border border-slate-300 rounded-xl p-3 text-xs sm:text-sm focus:ring-2 focus:ring-saffron-500 focus:outline-none h-20 font-medium"
               />
             </div>
 
@@ -480,7 +480,7 @@ export const EligibilityWizard: React.FC<Props> = ({ initialProfile, onComplete,
             <button
               type="button"
               onClick={() => setStep(step + 1)}
-              className="px-7 py-2.5 bg-jan-700 hover:bg-jan-800 text-white rounded-xl text-xs sm:text-sm font-extrabold flex items-center gap-2 shadow-md hover:shadow-lg transition-all cursor-pointer border border-jan-800"
+              className="px-7 py-2.5 bg-saffron-500 hover:bg-saffron-600 text-white rounded-xl text-xs sm:text-sm font-extrabold flex items-center gap-2 shadow-md hover:shadow-saffron-500/30 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
             >
               <span>Continue</span>
               <ArrowRight className="w-4 h-4" />
@@ -491,7 +491,7 @@ export const EligibilityWizard: React.FC<Props> = ({ initialProfile, onComplete,
               disabled={!captchaVerified || isSubmitting}
               className={`px-8 py-3 rounded-xl text-xs sm:text-sm font-extrabold flex items-center gap-2 shadow-md transition-all ${
                 captchaVerified && !isSubmitting
-                  ? 'bg-jan-700 hover:bg-jan-800 text-white cursor-pointer hover:shadow-lg border border-jan-800'
+                  ? 'bg-saffron-500 hover:bg-saffron-600 text-white cursor-pointer hover:shadow-saffron-500/30 hover:scale-[1.02] active:scale-[0.98]'
                   : 'bg-slate-300 text-slate-600 border border-slate-400 cursor-not-allowed'
               }`}
             >

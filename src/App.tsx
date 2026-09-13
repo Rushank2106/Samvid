@@ -201,8 +201,8 @@ export function App() {
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div>
                 <div className="flex items-center gap-2 mb-1">
-                  <Sparkles className="w-5 h-5 text-jan-600" />
-                  <span className="text-xs font-bold uppercase tracking-wider text-jan-700">
+                  <Sparkles className="w-5 h-5 text-saffron-600" />
+                  <span className="text-xs font-extrabold uppercase tracking-wider text-saffron-700">
                     Personalized Discovery Engine
                   </span>
                 </div>
@@ -221,9 +221,9 @@ export function App() {
                     setComparisonSchemes(filteredSchemes.slice(0, 3).map((f) => f.scheme));
                     setShowComparison(true);
                   }}
-                  className="bg-white border border-slate-300 hover:border-jan-400 text-slate-800 font-semibold px-4 py-2 rounded-xl text-xs flex items-center gap-1.5 shadow-sm transition-all"
+                  className="bg-white border border-slate-300 hover:border-saffron-400 text-slate-800 font-extrabold px-4 py-2 rounded-xl text-xs flex items-center gap-1.5 shadow-sm transition-all cursor-pointer"
                 >
-                  <Columns className="w-4 h-4 text-jan-600" />
+                  <Columns className="w-4 h-4 text-saffron-600" />
                   <span>Compare Top Schemes</span>
                 </button>
               )}
@@ -250,8 +250,8 @@ export function App() {
 
             {/* Scheme Cards Grid */}
             {filteredSchemes.length === 0 ? (
-              <div className="bg-white border border-slate-200 rounded-2xl p-12 text-center space-y-3">
-                <p className="font-bold text-slate-800 text-base">
+              <div className="bg-white border border-slate-200 rounded-3xl p-12 text-center space-y-3">
+                <p className="font-extrabold text-slate-900 text-base">
                   No matching schemes found based on current filters.
                 </p>
                 <p className="text-xs text-slate-500 max-w-md mx-auto">
@@ -264,7 +264,7 @@ export function App() {
                     setSelectedState('All');
                     setSearchQuery('');
                   }}
-                  className="px-4 py-2 bg-jan-700 text-white text-xs font-bold rounded-xl"
+                  className="px-5 py-2.5 bg-saffron-500 hover:bg-saffron-600 text-white text-xs font-extrabold rounded-xl transition-all shadow-sm cursor-pointer"
                 >
                   Reset All Filters
                 </button>

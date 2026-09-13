@@ -1,5 +1,5 @@
 import React from 'react';
-import { Compass, Sparkles, CheckCircle2, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Compass, ArrowRight, ShieldCheck } from 'lucide-react';
 import { UserEligibilityProfile, SchemeCategory } from '../../types';
 
 interface Props {
@@ -42,23 +42,23 @@ export const BenefitGapAnalyzer: React.FC<Props> = ({ profile, onExploreCategory
   ];
 
   return (
-    <div className="bg-slate-900 text-white rounded-2xl p-6 sm:p-8 shadow-md border border-slate-800 space-y-6">
+    <div className="bg-gradient-to-b from-navy-950 via-slate-900 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-md border border-slate-800 space-y-6 border-t-4 border-t-saffron-500">
       <div className="flex items-start justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <Compass className="w-5 h-5 text-jan-400" />
-            <span className="text-xs font-bold uppercase tracking-wider text-jan-300">
+            <Compass className="w-5 h-5 text-saffron-400" />
+            <span className="text-xs font-extrabold uppercase tracking-wider text-saffron-300">
               Personalized Opportunity Layer
             </span>
           </div>
           <h2 className="text-xl sm:text-2xl font-extrabold text-white">
             Potential Benefit Gap Analyzer
           </h2>
-          <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl">
+          <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl font-normal">
             You may want to explore these additional welfare categories based on your citizen profile ({profile.occupation}, {profile.state}).
           </p>
         </div>
-        <span className="bg-slate-800 text-jan-300 text-xs font-bold px-3 py-1 rounded-full border border-slate-700 hidden sm:inline-block">
+        <span className="bg-slate-800 text-saffron-300 text-xs font-extrabold px-3 py-1 rounded-full border border-slate-700 hidden sm:inline-block">
           Profile Context Active
         </span>
       </div>
@@ -67,31 +67,31 @@ export const BenefitGapAnalyzer: React.FC<Props> = ({ profile, onExploreCategory
         {allCategories.map((item) => (
           <div
             key={item.name}
-            className={`p-4 rounded-xl border transition-all ${
+            className={`p-4 rounded-2xl border transition-all ${
               item.status === 'Already Explored'
                 ? 'bg-slate-800/60 border-slate-700/80 text-slate-300'
-                : 'bg-jan-950/60 border-jan-700/80 text-white hover:border-jan-500'
+                : 'bg-slate-800/90 border-slate-700 text-white hover:border-saffron-400 shadow-xs'
             }`}
           >
             <div className="flex items-center justify-between gap-2 mb-1.5">
-              <h3 className="font-bold text-sm text-white flex items-center gap-2">
+              <h3 className="font-extrabold text-sm text-white flex items-center gap-2">
                 <span>{item.name} Support</span>
               </h3>
               <span
-                className={`text-[10px] font-bold px-2 py-0.5 rounded ${
+                className={`text-[10px] font-extrabold px-2 py-0.5 rounded ${
                   item.status === 'Already Explored'
                     ? 'bg-slate-700 text-slate-300'
-                    : 'bg-jan-600 text-white font-extrabold shadow-sm'
+                    : 'bg-saffron-500 text-white font-extrabold shadow-2xs'
                 }`}
               >
                 {item.status}
               </span>
             </div>
-            <p className="text-xs text-slate-300 leading-relaxed mb-3">{item.note}</p>
+            <p className="text-xs text-slate-300 leading-relaxed mb-3 font-normal">{item.note}</p>
 
             <button
               onClick={() => onExploreCategory(item.name)}
-              className="text-xs font-bold text-jan-300 hover:text-white flex items-center gap-1 transition-colors"
+              className="text-xs font-extrabold text-saffron-300 hover:text-white flex items-center gap-1 transition-colors cursor-pointer"
             >
               <span>Explore Schemes</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -100,8 +100,8 @@ export const BenefitGapAnalyzer: React.FC<Props> = ({ profile, onExploreCategory
         ))}
       </div>
 
-      <div className="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700 text-xs text-slate-400 flex items-center gap-2">
-        <ShieldCheck className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+      <div className="bg-slate-800/70 p-3.5 rounded-2xl border border-slate-700 text-xs text-slate-300 flex items-center gap-2">
+        <ShieldCheck className="w-4 h-4 text-indiagreen-400 flex-shrink-0" />
         <span>
           <strong>Disclaimer:</strong> Samvida highlights potential opportunities. Final eligibility decisions are rendered solely by government departments upon official application submission.
         </span>
