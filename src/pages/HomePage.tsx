@@ -63,7 +63,9 @@ export const HomePage: React.FC<Props> = ({
           {/* Left Column Content */}
           <div className="max-w-2xl space-y-6 flex-1">
             <div className="inline-flex items-center gap-2.5 bg-slate-900/90 border border-saffron-500/60 px-4 py-1.5 rounded-full text-xs font-bold text-saffron-300 backdrop-blur-md">
-              <img src={SAMVIDA_LOGO_DATA_URI} alt="Samvida Logo" className="w-5 h-5 rounded-full object-contain bg-white p-0.5 border border-saffron-400" />
+              <div className="w-5 h-5 rounded-full bg-white border border-saffron-400 flex items-center justify-center p-0.5 flex-shrink-0">
+                <img src={SAMVIDA_LOGO_DATA_URI} alt="Samvida Logo" className="w-full h-full max-w-[85%] max-h-[85%] object-contain" />
+              </div>
               <span>SAMVIDA Track — AI Multilingual Citizen Navigator</span>
             </div>
 
@@ -95,13 +97,13 @@ export const HomePage: React.FC<Props> = ({
           </div>
 
           {/* Right Column: SAMVIDA Emblem Showcase */}
-          <div className="hidden lg:flex items-center justify-center flex-shrink-0 w-[360px] h-[360px] relative group">
+          <div className="flex items-center justify-center flex-shrink-0 w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] lg:w-[360px] lg:h-[360px] relative group mx-auto lg:mx-0">
             <div className="absolute inset-0 bg-gradient-to-tr from-saffron-500/25 via-white/10 to-indiagreen-500/25 rounded-full blur-2xl group-hover:scale-105 transition-transform duration-500" />
-            <div className="relative z-10 bg-white p-3 rounded-full border-4 border-saffron-400 shadow-2xl transition-all duration-300 w-[340px] h-[340px] flex items-center justify-center overflow-hidden">
+            <div className="relative z-10 bg-white p-5 sm:p-6 lg:p-7 rounded-full border-4 border-saffron-400 shadow-2xl transition-all duration-300 w-[240px] h-[240px] sm:w-[300px] sm:h-[300px] lg:w-[340px] lg:h-[340px] flex items-center justify-center overflow-hidden">
               <img
                 src={SAMVIDA_LOGO_DATA_URI}
                 alt="SAMVIDA Official Government Scheme Emblem"
-                className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-xl rounded-full"
+                className="w-full h-full max-w-[82%] max-h-[82%] object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-md"
               />
             </div>
           </div>

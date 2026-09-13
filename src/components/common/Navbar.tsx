@@ -30,11 +30,13 @@ export const Navbar: React.FC<NavbarProps> = ({
             className="flex items-center gap-3 cursor-pointer group flex-shrink-0"
             onClick={() => onSelectTab('home')}
           >
-            <img
-              src={SAMVIDA_LOGO_DATA_URI}
-              alt="Samvida Logo"
-              className="w-10 h-10 object-contain rounded-full shadow-md bg-white p-0.5 border-2 border-saffron-500 group-hover:scale-105 transition-all"
-            />
+            <div className="w-10 h-10 rounded-full shadow-md bg-white border-2 border-saffron-500 flex items-center justify-center p-1 overflow-hidden group-hover:scale-105 transition-all flex-shrink-0">
+              <img
+                src={SAMVIDA_LOGO_DATA_URI}
+                alt="Samvida Logo"
+                className="w-full h-full max-w-[85%] max-h-[85%] object-contain"
+              />
+            </div>
             <div>
               <div className="flex items-center gap-2">
                 <span className="text-xl font-extrabold tracking-tight text-slate-900 group-hover:text-saffron-600 transition-colors">
